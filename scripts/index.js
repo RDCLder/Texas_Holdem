@@ -127,7 +127,7 @@ class Deck {
         }
     }
 
-    dealTarget(hand, target) {
+    dealHole(hand, target) {
         let cards = this.deal(2);
         for (let i = 0; i < 2; i ++) {
             let $cardImg = $("<img>", {
@@ -162,15 +162,15 @@ var deck = new Deck();
 
 // Test Code Below
 
-// deck.dealTarget(i, "#playerHand");
-// deck.dealTarget("#dealerHand");
-// deck.dealTarget("#botHand1");
+// deck.dealHole(i, "#playerHand");
+// deck.dealHole("#dealerHand");
+// deck.dealHole("#botHand1");
 // deck.flop();
 // deck.turn();
 // deck.river();
 
 for (let i = 0; i < allHands.length; i ++) {
-    deck.dealTarget(allHands[i], allHandIDs[i]);
+    deck.dealHole(allHands[i], allHandIDs[i]);
 }
 
 console.log(allHands[0]);
@@ -186,7 +186,7 @@ console.log(allHands[0]);
 $("#newRound").click(() => {
 
     for (let i = 0; i < allHands.length; i ++) {
-        deck.dealTarget(allHands[i], "#playerHand");
+        deck.dealHole(allHands[i], "#playerHand");
     }
 
 })
