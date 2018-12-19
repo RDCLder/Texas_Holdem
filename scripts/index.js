@@ -11,6 +11,7 @@ $(function() {
 
 let playerName = prompt("Enter your name", "Player Name");
 const $playerName = $("#playerName").text(playerName);
+
 var allHands = [[],];
 const allHandIDs = [
     "#playerHand",
@@ -156,24 +157,11 @@ class Deck {
 
 }
 
-var deck = new Deck();
-
 // ---------------------------------------------------------------------------------------
 
 // Test Code Below
 
-// deck.dealHole(i, "#playerHand");
-// deck.dealHole("#dealerHand");
-// deck.dealHole("#botHand1");
-// deck.flop();
-// deck.turn();
-// deck.river();
 
-for (let i = 0; i < allHands.length; i ++) {
-    deck.dealHole(allHands[i], allHandIDs[i]);
-}
-
-console.log(allHands[0]);
 
 // ---------------------------------------------------------------------------------------
 
@@ -183,12 +171,55 @@ console.log(allHands[0]);
 
 // Event Definitions
 
-$("#newRound").click(() => {
+$("#dealButton").click(() => {
+
+    // We will use this for initiating the first round and all consecutive rounds
+    // The first thing to do is to remove every card img from the table and value in var allHands
+
+    var deck = new Deck();
 
     for (let i = 0; i < allHands.length; i ++) {
-        deck.dealHole(allHands[i], "#playerHand");
+        deck.dealHole(allHands[i], allHandIDs[i]);
     }
 
+    // Once the hole cards have been dealt, we want to disable the Deal button
+    // We might want to add an ante for all players
+    // We set the bet to whatever the starting amount is (usually double the ante)
+    // Then, players will be able to Call, Raise or Fold
+
 })
+
+$("#callButton").click(() => {
+
+    // Clicking this button will match whatever the bet is
+
+})
+
+$("#raiseButton").click(() => {
+
+
+
+})
+
+$("#foldButton").click(() => {
+
+
+
+})
+
+$("#quitButton").click(() => {
+
+    // Remove all cards, both images on table and whatever is stored to var allHands
+    // Resets all bots to inactive
+    // Removes all money
+
+})
+
+// deck.dealHole(i, "#playerHand");
+// deck.dealHole("#dealerHand");
+// deck.dealHole("#botHand1");
+// deck.flop();
+// deck.turn();
+// deck.river();
 
 }); // End of Script
